@@ -1,3 +1,6 @@
+streamlit
+scikit-learn
+numpy
 accelerate==1.13.0
 aiohappyeyeballs==2.6.1
 aiohttp==3.13.5
@@ -64,3 +67,4 @@ tzdata==2026.2
 urllib3==2.6.3
 xxhash==3.6.0
 yarl==1.23.0
+
