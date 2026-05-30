@@ -9,8 +9,9 @@ st.set_page_config(
     layout="centered",
 )
 
-MODEL_DIR      = "checkpoint-319"            # the trained AfroXLMR detector
-BASE_TOKENIZER = "Davlan/afro-xlmr-base"     # tokenizer (unchanged by fine-tuning)
+MODEL_DIR      = "checkpoint-319"             # the trained AfroXLMR detector
+BASE_TOKENIZER = "Davlan/afro-xlmr-base"      # tokenizer (unchanged by fine-tuning)
+BASELINE_PKL   = "tfidf_lr_baseline.pkl"      # TF-IDF + Logistic Regression baseline
 
 # Styling
 
@@ -56,7 +57,7 @@ st.markdown("""
 
 
 # Header
-banner = base64.b64encode(pathlib.Path("Africa.jpg").read_bytes()).decode()
+banner = base64.b64encode(pathlib.Path("africa.jpg").read_bytes()).decode()
 st.markdown(f"""
 <div style="
     position: relative; border-radius: 18px; overflow: hidden;
@@ -74,32 +75,36 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown("""
-<div class="chips">
-    <span class="chip">isiXhosa</span>
-    <span class="chip">isiZulu</span>
-    <span class="chip">Sepedi</span>
-    <span class="chip">Kiswahili</span>
-</div>
-""", unsafe_allow_html=True)
 
 
-# Model loader (cached)
+# Model loaders (cached)
 
 @st.cache_resource(show_spinner="Loading AfroXLMR detector… (first run only)")
-def load_model():
+def load_afroxlmr():
     from transformers import AutoTokenizer, AutoModelForSequenceClassification
     tok   = AutoTokenizer.from_pretrained(BASE_TOKENIZER)
     model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
     model.eval()
     return tok, model
 
-# Input
+@st.cache_resource(show_spinner="Loading baseline model…")
+def load_baseline():
+    import joblib
+    return joblib.load(BASELINE_PKL)
+
+
+# Model selector + input
+
+model_choice = st.selectbox(
+    "Model",
+    ["AfroXLMR (more accurate)", "TF-IDF + Logistic Regression (baseline)"],
+)
+use_baseline = "Logistic" in model_choice
 
 text = st.text_area(
     "Enter text to analyse",
     height=180,
-    placeholder="Ngena isicatshulwa sakho lapha…\nAndika maandishi yako hapa…\nFaka mokwalo wa gago fa…",
+    placeholder="Type or paste your text here…",
 )
 
 col_run, col_clear = st.columns([3, 1])
@@ -118,18 +123,24 @@ if run:
         st.warning("⚠️  Please enter at least 10 characters for a reliable result.")
         st.stop()
 
-    import torch
     with st.spinner("Analysing…"):
-        tok, model = load_model()
-        inputs = tok(text, return_tensors="pt", truncation=True, max_length=512)
-        with torch.no_grad():
-            logits = model(**inputs).logits
-        probs  = torch.softmax(logits, dim=-1)[0].tolist()
-        label  = int(torch.argmax(logits).item())
+        if use_baseline:
+            pipe  = load_baseline()
+            proba = pipe.predict_proba([text])[0]      # [P(human), P(AI)]
+            label = int(pipe.predict([text])[0])
+            human, ai = float(proba[0]), float(proba[1])
+        else:
+            import torch
+            tok, model = load_afroxlmr()
+            inputs = tok(text, return_tensors="pt", truncation=True, max_length=512)
+            with torch.no_grad():
+                logits = model(**inputs).logits
+            probs = torch.softmax(logits, dim=-1)[0].tolist()
+            label = int(torch.argmax(logits).item())
+            human, ai = probs[0], probs[1]
 
-    ai, human = probs[1], probs[0]
-    is_ai     = label == 1
-    conf      = max(ai, human) * 100
+    is_ai = label == 1
+    conf  = max(ai, human) * 100
 
     card  = "ai-card" if is_ai else "human-card"
     icon  = "🤖" if is_ai else "👤"
@@ -137,12 +148,12 @@ if run:
 
     if conf >= 85:    strength = "High confidence"
     elif conf >= 65:  strength = "Moderate confidence"
-    else:             strength = "Low confidence — result is uncertain"
+    else:             strength = "Low confidence - result is uncertain"
 
     st.markdown(f"""
     <div class="result-card {card}">
         <p class="verdict">{icon} {title}</p>
-        <p class="verdict-sub">{strength} · {conf:.1f}%</p>
+        <p class="verdict-sub">{strength} · {conf:.1f}% · {model_choice.split('(')[0].strip()}</p>
     </div>
     """, unsafe_allow_html=True)
 
