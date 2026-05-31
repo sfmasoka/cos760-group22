@@ -51,7 +51,7 @@ cos760-group22/
 ├── data/             # Data folder (see data/README.md)
 ├── models/           # Trained model checkpoints (see models/README.md)
 ├── notebooks/        # Main project notebook
-│   └── nlp_project_v2.ipynb
+│   └── nlp_project_final.ipynb
 ├── results/          # All CSV/PNG outputs from notebook
 │   ├── model_comparison_full.csv
 │   ├── cross_lingual_transfer_summary.csv
@@ -69,7 +69,7 @@ cos760-group22/
 │   ├── linguistic_violin_plots.png
 │   └── transfer_gap_plot.png
 ├── src/              # Streamlit demo app
-│   └── app.py        # Interactive text detector UI
+│   └── app_v2.py        # Interactive text detector UI
 ├── .gitignore
 ├── README.md         # This file
 └── requirements.txt  # Python dependencies
@@ -96,7 +96,7 @@ There are **two ways** to interact with this project:
 The notebook was developed end-to-end on Google Colab with Drive
 mounted. This is the path that reproduces every result in the report.
 
-1. Upload `notebooks/nlp_project_v2.ipynb` to Google Colab.
+1. Upload `notebooks/nlp_project_final.ipynb` to Google Colab.
 2. Mount Google Drive (the first code cell does this).
 3. Create the following folder in your Drive:
    ```
@@ -169,7 +169,7 @@ dropdown, paste some text, and click **Analyse text**.
 
 ### 4.1 Reproducing the headline results (notebook)
 
-Each section of `nlp_project_v2.ipynb` is self-contained and saves its
+Each section of `nlp_project_final.ipynb` is self-contained and saves its
 outputs to `results/` and `models/`. Run them in order:
 
 | Section | What it does | Outputs |
