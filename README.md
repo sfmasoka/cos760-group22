@@ -134,10 +134,10 @@ pip install -r requirements.txt
 
 **4. Download the trained models** from our shared Google Drive folder:
 
-> *<insert your Drive link here>*
+https://drive.google.com/drive/u/2/folders/1efJ7O5E-9szDYxHZy05kCtV86uma_Sb0
 
-The download contains two items. Place them inside the `models/` folder
-in the repo so the final structure looks like this:
+Download the zip named "afroxlmr_detector.zip" and the "tfidf_lr_baseline.pkl" . Place them inside the `models/` folder
+in the repo (unzip the afroxlmr_detector.zip ) so the final structure looks like this:
 
 ```
 cos760-group22/
