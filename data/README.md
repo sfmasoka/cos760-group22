@@ -11,6 +11,8 @@ with this repository** because:
    a minute (excluding LLM API calls).
 
 ---
+## To preview the already generated data from previous notebook run follow link
+https://drive.google.com/drive/u/2/folders/1CC4eYP-saHXOJGF0BHOJvCcCEdgRudEr
 
 ## Expected structure (created by the notebook)
 
