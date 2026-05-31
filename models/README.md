@@ -37,7 +37,7 @@ Run **S4 (TF-IDF + LR)** and **S5 (AfroXLMR fine-tuning)** of
 
 ### Option 2 — Download pre-trained checkpoints
 
-If you only want to run the Streamlit demo (`src/app.py`), download
+If you only want to run the Streamlit demo (`src/app_v2.py`), download
 the trained checkpoints from the team's Google Drive folder:
 
 > **Download link:https://drive.google.com/drive/u/2/folders/1JUxjw66uCqB75OaVmJrNWzya9c-a_2eS
