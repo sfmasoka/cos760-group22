@@ -40,7 +40,7 @@ Run **S4 (TF-IDF + LR)** and **S5 (AfroXLMR fine-tuning)** of
 If you only want to run the Streamlit demo (`src/app_v2.py`), download
 the trained checkpoints from the team's Google Drive folder:
 
-> **Download link:https://drive.google.com/drive/u/2/folders/1JUxjw66uCqB75OaVmJrNWzya9c-a_2eS
+> **Download link:https://drive.google.com/drive/u/2/folders/1efJ7O5E-9szDYxHZy05kCtV86uma_Sb0
 
 Place the files exactly as shown in the structure above. The Streamlit
 app expects `models/afroxlmr_detector/checkpoint-319/` to be present.
