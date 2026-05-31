@@ -9,10 +9,11 @@ st.set_page_config(
     layout="centered",
 )
 
-MODEL_DIR      = "checkpoint-319"             # the trained AfroXLMR detector
-BASE_TOKENIZER = "Davlan/afro-xlmr-base"      # tokenizer (unchanged by fine-tuning)
-BASELINE_PKL   = "tfidf_lr_baseline.pkl"      # TF-IDF + Logistic Regression baseline
-
+MODEL_DIR      = "models/afroxlmr_detector"             # the trained AfroXLMR detector
+#BASE_TOKENIZER = "Davlan/afro-xlmr-base"      # tokenizer (unchanged by fine-tuning)
+# Tokenizer lives inside MODEL_DIR (saved alongside the fine-tuned weights)
+#BASELINE_PKL   = "tfidf_lr_baseline.pkl"      # TF-IDF + Logistic Regression baseline
+BASELINE_PKL   = "models/tfidf_lr_baseline.pkl"
 # Styling
 
 st.markdown("""
@@ -57,7 +58,10 @@ st.markdown("""
 
 
 # Header
-banner = base64.b64encode(pathlib.Path("africa.jpg").read_bytes()).decode()
+#banner = base64.b64encode(pathlib.Path("africa.jpg").read_bytes()).decode()
+banner = base64.b64encode(
+    (pathlib.Path(__file__).parent / "africa.jpg").read_bytes()
+).decode()
 st.markdown(f"""
 <div style="
     position: relative; border-radius: 18px; overflow: hidden;
@@ -82,7 +86,8 @@ st.markdown(f"""
 @st.cache_resource(show_spinner="Loading AfroXLMR detector… (first run only)")
 def load_afroxlmr():
     from transformers import AutoTokenizer, AutoModelForSequenceClassification
-    tok   = AutoTokenizer.from_pretrained(BASE_TOKENIZER)
+    #tok   = AutoTokenizer.from_pretrained(BASE_TOKENIZER)
+    tok   = AutoTokenizer.from_pretrained(MODEL_DIR)
     model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
     model.eval()
     return tok, model
