@@ -115,32 +115,55 @@ mounted. This is the path that reproduces every result in the report.
 
 ### Option B — Run the Streamlit demo locally (inference only)
 
-A standalone demo that loads the fine-tuned model and classifies any
-text the user enters.
+A standalone demo that loads the trained models and classifies any
+text the user enters. No GPU or API keys required.
 
 ```bash
-# Clone the repo
-git clone https://github.com/sfmasoka/cos760-group22.git
+# 1. Clone the repo
+git clone https://github.com/agegerag/cos760-group22.git
 cd cos760-group22
 
-# Create a virtual environment (Python 3.10 or 3.11 recommended)
+# 2. Create a virtual environment (Python 3.10 or 3.11 recommended)
 python -m venv .venv
-source .venv/bin/activate         # On Windows: .venv\Scripts\activate
+source .venv/bin/activate         # Mac/Linux
+# .venv\Scripts\activate          # Windows
 
-# Install dependencies
+# 3. Install dependencies
 pip install -r requirements.txt
+```
 
-# Download the trained AfroXLMR checkpoint (see models/README.md
-# for the link). Place it at:
-#   models/afroxlmr_detector/
+**4. Download the trained models** from our shared Google Drive folder:
 
-# Run the Streamlit app
+> *<insert your Drive link here>*
+
+The download contains two items. Place them inside the `models/` folder
+in the repo so the final structure looks like this:
+
+```
+cos760-group22/
+└── models/
+    ├── afroxlmr_detector/
+    │   ├── config.json
+    │   ├── model.safetensors
+    │   ├── tokenizer.json
+    │   └── tokenizer_config.json
+    └── tfidf_lr_baseline.pkl
+```
+
+If the downloaded folder is named differently (e.g. `afroxlmr_detector_final`),
+rename it to `afroxlmr_detector`.
+
+**5. Run the demo from the repo root:**
+
+```bash
 streamlit run src/app_v2.py
 ```
 
-The app will open at `http://localhost:8501`.
+> ⚠️ Run streamlit from the repo root (not from inside `src/`), or it
+> will not find `models/` and `africa.jpg`.
 
----
+The app will open at `http://localhost:8501`. Choose a model from the
+dropdown, paste some text, and click **Analyse text**.
 
 ## 4. Running the Code — Step-by-Step
 
