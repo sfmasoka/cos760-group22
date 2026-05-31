@@ -137,7 +137,7 @@ pip install -r requirements.txt
 https://drive.google.com/drive/u/2/folders/1efJ7O5E-9szDYxHZy05kCtV86uma_Sb0
 
 Download *ONLY* the zip named "**afroxlmr_detector.zip**" and the "**tfidf_lr_baseline.pkl**" files . Place them inside the `models/` folder
-in the repo (unzip the afroxlmr_detector.zip ) so the final structure looks like this:
+in the cloned repo (unzip the afroxlmr_detector.zip ) so the final structure looks like this:
 
 ```
 cos760-group22/
