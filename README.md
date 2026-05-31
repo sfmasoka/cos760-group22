@@ -120,7 +120,7 @@ text the user enters. No GPU or API keys required.
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/agegerag/cos760-group22.git
+git clone https://github.com/sfmasoka/cos760-group22.git
 cd cos760-group22
 
 # 2. Create a virtual environment (Python 3.10 or 3.11 recommended)
