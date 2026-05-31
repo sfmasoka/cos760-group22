@@ -42,21 +42,7 @@ the trained checkpoints from the team's Google Drive folder:
 
 > **Download link:https://drive.google.com/drive/u/2/folders/1efJ7O5E-9szDYxHZy05kCtV86uma_Sb0
 
-Place the files exactly as shown in the structure above. The Streamlit
+Download the the zip named "**afroxlmr_detector.zip**" and "**tfidf_lr_baseline.pkl**" and "**afro_transfer_a**" and "**afro_transfer_b**". Place the files exactly as shown in the structure above. The Streamlit
 app expects `models/afroxlmr_detector` to be present.
 
----
 
-## Loading the saved models in Python
-
-```python
-# TF-IDF + LR
-import joblib
-pipeline = joblib.load("models/tfidf_lr_baseline.pkl")
-preds = pipeline.predict(["Sample text to classify"])
-
-# AfroXLMR
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-tokenizer = AutoTokenizer.from_pretrained("models/afroxlmr_detector")
-model = AutoModelForSequenceClassification.from_pretrained("models/afroxlmr_detector")
-```
