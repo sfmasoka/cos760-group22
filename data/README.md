@@ -42,7 +42,7 @@ data/
 
 ## How to regenerate
 
-The notebook (`notebooks/nlp_project_v2.ipynb`) handles everything:
+The notebook (`notebooks/nlp_project_final.ipynb`) handles everything:
 
 - **S1 Human Text Collection** — downloads Vukuzenzele and AfriSenti,
   cleans, splits into sentences. Produces files in `data/raw/` and
