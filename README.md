@@ -120,7 +120,7 @@ text the user enters.
 
 ```bash
 # Clone the repo
-git clone https://github.com/<your-username>/cos760-group22.git
+git clone https://github.com/sfmasoka/cos760-group22.git
 cd cos760-group22
 
 # Create a virtual environment (Python 3.10 or 3.11 recommended)
@@ -135,7 +135,7 @@ pip install -r requirements.txt
 #   models/afroxlmr_detector/
 
 # Run the Streamlit app
-streamlit run src/app.py
+streamlit run src/app_v2.py
 ```
 
 The app will open at `http://localhost:8501`.
@@ -170,7 +170,7 @@ outputs to `results/` and `models/`. Run them in order:
 ### 4.2 Streamlit demo
 
 ```bash
-streamlit run src/app.py
+streamlit run src/app_v2.py
 ```
 
 The app takes a text input, runs it through both the baseline and

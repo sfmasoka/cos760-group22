@@ -1,0 +1,7 @@
+Model,Scenario,Train,Test,Zero_shot_F1,In_lang_F1,AUC
+AfroXLMR,A,xhosa+zulu,sepedi,0.8967,0.9319,0.9589
+AfroXLMR,B,xhosa+zulu+sepedi,swahili,0.8215,0.9899,0.9866
+TF-IDF+LR,A — Nguni → Sotho,xhosa+zulu,sepedi,0.3706,0.9419,0.4342
+TF-IDF+LR,B — SA → East Africa,xhosa+zulu+sepedi,swahili,0.7124,0.8716,0.7259
+TF-IDF+LR,C — Non-Nguni → Xhosa,sepedi+swahili,xhosa,0.4876,0.9582,0.6504
+TF-IDF+LR,D — Non-Zulu → Zulu,xhosa+sepedi+swahili,zulu,0.8242,0.9034,0.903

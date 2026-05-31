@@ -1,0 +1,5 @@
+scenario,train_langs,test_lang,n_train,n_test,macro_f1,accuracy,auc_roc,in_lang_f1,transfer_gap
+A — Nguni → Sotho,xhosa+zulu,sepedi,2816,180,0.3706,0.5889,0.4342,0.9419,0.5713
+B — SA → East Africa,xhosa+zulu+sepedi,swahili,4192,108,0.7124,0.7222,0.7259,0.8716,0.1592
+C — Non-Nguni → Xhosa,sepedi+swahili,xhosa,2285,176,0.4876,0.6307,0.6504,0.9582,0.4706
+D — Non-Zulu → Zulu,xhosa+sepedi+swahili,zulu,3755,174,0.8242,0.8276,0.903,0.9034,0.0792

@@ -29,7 +29,7 @@ models/
 ### Option 1 — Train from scratch (recommended for reproducibility)
 
 Run **S4 (TF-IDF + LR)** and **S5 (AfroXLMR fine-tuning)** of
-`notebooks/nlp_project_v2.ipynb`. Training time on a Colab T4 GPU:
+`notebooks/nlp_project_final.ipynb`. Training time on a Colab T4 GPU:
 
 - TF-IDF + LR: ~10 seconds
 - AfroXLMR (3 epochs): ~15 minutes

@@ -1,0 +1,6 @@
+feature,human_mean,human_std,machine_mean,machine_std,p_value,significance
+ttr,0.9275,0.1004,0.8302,0.1633,4.10e-249,***
+mean_word_len,6.5506,1.8768,6.5351,1.8817,7.30e-01,ns
+sent_count,1.1834,0.7613,2.1207,1.2666,0.00e+00,***
+punct_density,0.0127,0.0161,0.017,0.0064,2.79e-210,***
+word_count,22.4767,18.6109,41.4633,28.0878,1.46e-308,***

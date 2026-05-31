@@ -1,0 +1,6 @@
+feature,r,p,sig
+ttr,-0.3411,7.49e-19,***
+mean_word_len,-0.0622,1.16e-01,ns
+sent_count,0.2095,9.29e-08,***
+punct_density,0.233,2.57e-09,***
+word_count,0.2882,1.15e-13,***
